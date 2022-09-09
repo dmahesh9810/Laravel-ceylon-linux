@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Region;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -80,5 +81,23 @@ class SearchController extends Controller
     {
         return view('order')
             ->with(['orders' => $order]);
+    }
+    public function livesearch(Request $request)
+    {
+        if($request->ajax()){
+
+            $output = "";
+            $data = Region::where('zone_id', 'LIKE', '%'.$request->search)->get();
+
+            if($data){
+                foreach($data as $data){
+                    $output .=  '<option name="zone_id" value="'.$data->id.'" id="1">'.$data->region_code.'</option>';
+                }
+
+                return response()->json($output);
+            }
+        }
+
+        return view('admin.liveserch');
     }
 }

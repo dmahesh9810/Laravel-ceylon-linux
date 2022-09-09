@@ -20,6 +20,14 @@
                         <h1>Add Users</h1>
                         <hr><br>
 
+                        <input type="text" name="skucode" value="{{ $skucode }}" class="ml-16 w-80" hidden>
+                        <label for="" class="required">SKU Code :</label>&nbsp;&nbsp;&nbsp;
+                        <input type="text"  value="{{ $skucode }}" class="ml-16 w-80  bg-gray-100" disabled>
+
+                        <input type="text" name="skuid" value="{{ $skuid }}" class="ml-16 w-80" hidden><br><br>
+                        <label for="" class="required">SKU Id :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text"  value="{{ $skuid }}" class="ml-16 w-80  bg-gray-100" disabled><br><br>
+
                         <label for="" class="required">SKU Name :</label>&nbsp;&nbsp;&nbsp;
                         <input type="text" name="name" value="{{ old('name') }}" class="ml-16 w-80"><br><br>
                         <label for="" class="required">MRP :</label>&nbsp;&nbsp;

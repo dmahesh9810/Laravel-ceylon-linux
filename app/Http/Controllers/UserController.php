@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddUserRequest;
 use App\Models\Role;
+use App\Models\Territory;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,7 +12,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.adduser');
+        $territory= Territory::all();
+        return view('admin.adduser')->with(['territory' => $territory]);
     }
     public function store(AddUserRequest $addUserRequest)
     {

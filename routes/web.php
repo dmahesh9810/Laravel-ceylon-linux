@@ -17,9 +17,7 @@ use App\Http\Controllers\ZoneController;
 use App\Models\zone;
 use Illuminate\Support\Facades\Route;
 use Barryvdh\DomPDF\Facade\Pdf;
-
-
-
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Search;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', AdminController::class)
         ->name('admin.dashboard');
+    Route::get('/livesearch',[SearchController::class, 'livesearch'])->name('admin.liveserch');
 
     Route::get('/admin/allzone', [EditZoneController::class, 'index'])->name('admin.edit.zone');
     Route::get('/admin/allregion', [EditRegionController::class, 'index'])->name('allregion');

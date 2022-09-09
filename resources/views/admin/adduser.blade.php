@@ -38,10 +38,10 @@
                         <label for="" class="required">Territory : &nbsp;&nbsp;</label>
                         <select name="territorie_id" value="{{ old('territorie_id') }}" id="territorie_id"
                             class="ml-12 w-80">
-                            <option value="1" id="territorie_id">1</option>
-                            <option value="2" id="territorie_id">2</option>
-                            <option value="3" id="territorie_id">3</option>
-                            <option value="4" id="territorie_id">4</option>
+                            @foreach ($territory as $territory)
+                            <option name="territorie_id" value="{{ $territory->id }}" id="territorie_id">{{ $territory->code }}
+                            </option>
+                        @endforeach
                         </select>
                         <br><br>
                         <label for="" class="required">User Name :</label>

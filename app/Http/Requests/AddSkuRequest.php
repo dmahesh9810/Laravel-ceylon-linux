@@ -25,6 +25,8 @@ class AddSkuRequest extends FormRequest
     public function rules()
     {
         return [
+            'skuid' => 'required',
+            'skucode' => 'required',
             'name' => 'required',
             'mrp' => 'required|numeric',
             'distributor_price' => 'required|numeric',

@@ -11,14 +11,16 @@ class SkuController extends Controller
 {
     public function index()
     {
-        return view('admin.addsku');
+        $skuid = IdGenerator::GenerateId(new Sku(), 'code', 2, 'SID');
+        $skucode = IdGenerator::GenerateId(new Sku(), 'code', 2, 'SKU');
+        return view('admin.addsku') ->with(['skuid' => $skuid,'skucode' => $skucode]);;
     }
 
     public function store(AddSkuRequest $addSkuRequest)
     {
         $distributor = new Sku();
-        $distributor->sku_id = IdGenerator::GenerateId(new Sku(), 'code', 2, 'SID');
-        $distributor->code  = IdGenerator::GenerateId(new Sku(), 'code', 2, 'SKU');
+        $distributor->sku_id = $addSkuRequest->get('skuid');
+        $distributor->code  = $addSkuRequest->get('skucode');
         $distributor->name = $addSkuRequest->get('name');
         $distributor->mrp = $addSkuRequest->get('mrp');
         $distributor->distributor_price = $addSkuRequest->get('distributor_price');
