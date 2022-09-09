@@ -15,6 +15,6 @@ class TerritorySeeder extends Seeder
      */
     public function run()
     {
-        Territory::factory(5)->create();
+        Territory::factory(1)->create();
     }
 }

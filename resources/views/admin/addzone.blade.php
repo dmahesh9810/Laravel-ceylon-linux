@@ -11,8 +11,19 @@
                     @endforeach
                     <form action="{{ route('addzone.store') }}" method="POST">
                         @csrf
+                        @if(session('success'))
+                        <div class="mx-6 py-1 px-4 mb-2 mt-2 bg-green-100 border text-green-600 text-sm rounded-md flex items-center justify-between shadow" role="alert">
 
-                        <hr><br>
+                            <span class="block sm:inline">{{session('success')}}</span>
+
+                        </div>
+                        @endif
+
+                        <input type="text" class="ml-12 w-80 bg-gray-100" value="{{ $code }}"
+                            name="code" hidden><br><br>
+                        <hr><br><label for="">Zone-code</label>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                        <input type="text" class="ml-12 w-80 bg-gray-100" value="{{ $code }}"
+                            disabled><br><br>
                         <label for="">Zone Long Description :</label>
                         <textarea name="discription" cols="33" rows="5" class="ml-3" value="{{ old('discription') }}"></textarea>
                         <br><br>

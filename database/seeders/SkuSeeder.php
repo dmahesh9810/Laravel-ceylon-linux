@@ -15,6 +15,6 @@ class SkuSeeder extends Seeder
      */
     public function run()
     {
-        Sku::factory(5)->create();
+        Sku::factory(1)->create();
     }
 }

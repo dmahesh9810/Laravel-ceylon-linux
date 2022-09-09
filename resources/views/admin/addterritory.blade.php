@@ -13,14 +13,26 @@
                         @csrf
                         <h1>Add Territory</h1>
                         <hr><br>
-                        <label for="">Region : </label>
+                        <label for="">Zone : </label>&ensp;
+
                         <select name="region_id" id="2" value="{{ old('region_id') }}" class="ml-20 w-80">
-                            <option value="1" id="2">1</option>
-                            <option value="2" id="2">2</option>
-                            <option value="3" id="2">3</option>
-                            <option value="4" id="2">4</option>
+                            @foreach ($zone as $zone)
+                            <option name="zone_id" value="{{$zone->id}}" id="1">{{$zone->code}}</option>
+                            @endforeach
+                        </select><br><br>
+                        <label for="">Region : </label>
+
+                        <select name="region_id" id="2" value="{{ old('region_id') }}" class="ml-20 w-80">
+                            @foreach ($region as $region)
+                            <option name="zone_id" value="{{$region->id}}" id="1">{{$region->region_code}}</option>
+                            @endforeach
                         </select>
                         <br><br>
+                        <label for="">Territory Name :</label>
+                        <input type="text" name="code" id="2" value="{{$code}}"
+                            class="ml-6 w-80" hidden>
+                        <input type="text"  id="2" value="{{$code}}"
+                            class="ml-6 w-80 bg-gray-100" disabled><br><br>
                         <label for="">Territory Name :</label>
                         <input type="text" name="name" id="2" value="{{ old('territoryname') }}"
                             class="ml-6 w-80"><br><br>

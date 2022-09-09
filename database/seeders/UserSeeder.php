@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         ])->assignRole(Role::ROLE_DISTRIBUTOR);
 
 
-        $users = User::factory(5)->create();
+        $users = User::factory(1)->create();
         foreach($users as $user){
            $user->assignRole(Role::ROLE_DISTRIBUTOR);
         }

@@ -11,16 +11,29 @@
                     @endforeach
                     <form action="{{ route('addregion.store') }}" method="post">
                         @csrf
+                        @csrf
+                        @if(session('success'))
+                        <div class="mx-6 py-1 px-4 mb-2 mt-2 bg-green-100 border text-green-600 text-sm rounded-md flex items-center justify-between shadow" role="alert">
+
+                            <span class="block sm:inline">{{session('success')}}</span>
+
+                        </div>
+                        @endif
                         <h1>Add Region</h1>
                         <hr><br>
                         <label for="">Zone : </label>
-                        <select name="zone_id" id="1" value="{{ old('zone_id') }}" class="ml-24 w-80">
-                            <option name="zone_id" value="1" id="1">1</option>
-                            <option name="zone_id" value="2" id="1">2</option>
-                            <option name="zone_id" value="3" id="1">3</option>
-                            <option name="zone_id" value="4" id="1">4</option>
+
+                        <select name="zone_id" id="1" class="ml-24 w-80">
+                            @foreach ($zone as $zone)
+                            <option name="zone_id" value="{{$zone->id}}" id="1">{{$zone->code}}</option>
+                            @endforeach
                         </select>
-                        <br><br>
+                        <input type="text" class="ml-12 w-80 bg-gray-100" value="{{ $code }}"
+                            name="code" hidden><br><br>
+                        <label for="">Region-code</label>
+                        <input type="text" class="ml-12 w-80 bg-gray-100" value="{{ $code }}"
+                              disabled><br><br>
+
 
                         <label for="">Region Name :</label>
                         <input type="text" name="region_name" value="{{ old('region_name') }}"
