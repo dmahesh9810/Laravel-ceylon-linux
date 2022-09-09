@@ -17,7 +17,6 @@ class AddZoneRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required',
             'discription' => 'required',
             'short_discription' => 'required',
         ];

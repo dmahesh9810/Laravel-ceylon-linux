@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddTerritoryRequest;
 use App\Http\Requests\AdminRequest;
+use App\Models\Region;
 use App\Models\Territory;
+use App\Models\zone;
 use Illuminate\Http\Request;
 
 class EditTerritoryController extends Controller
@@ -20,8 +22,10 @@ class EditTerritoryController extends Controller
 
     public function edit(AdminRequest $adminRequest, Territory $Territory)
     {
+        $zone = zone::all();
+        $region = Region::all();
         return view('admin.edit.edit-territory')
-            ->with(['territory' => $Territory]);
+            ->with(['territory' => $Territory, 'region'=>$region ,'zone'=>$zone]);
     }
 
     public function update(AddTerritoryRequest $request, Territory $territory)

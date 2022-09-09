@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('gender')->nullable();
-            $table->foreignId('territorie_id')->nullable();
+            $table->foreignId('territorie_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('user_name')->unique();
             $table->string('password');
             $table->rememberToken();

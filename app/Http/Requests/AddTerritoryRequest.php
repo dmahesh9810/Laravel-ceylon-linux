@@ -25,7 +25,7 @@ class AddTerritoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required',
+            // 'code' => 'sometime',
             'region_id' => 'required|numeric',
             'name' => 'required',
         ];

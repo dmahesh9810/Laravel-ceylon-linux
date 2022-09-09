@@ -25,7 +25,7 @@ class AddRegionRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required',
+            // 'code' => 'sometime',
             'zone_id' => 'required|numeric',
             'region_name' => 'required',
         ];

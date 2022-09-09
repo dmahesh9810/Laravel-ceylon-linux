@@ -40,6 +40,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', AdminController::class)
         ->name('admin.dashboard');
     Route::get('/livesearch',[SearchController::class, 'livesearch'])->name('admin.liveserch');
+    Route::get('/livesearch2',[SearchController::class, 'livesearch2'])->name('admin.liveserch');
 
     Route::get('/admin/allzone', [EditZoneController::class, 'index'])->name('admin.edit.zone');
     Route::get('/admin/allregion', [EditRegionController::class, 'index'])->name('allregion');

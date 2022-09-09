@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('zone_id');
+            $table->foreignId('zone_id')->constrained()->onDelete('cascade');
             $table->text('region_code');
             $table->text('region_name');
             $table->timestamps();

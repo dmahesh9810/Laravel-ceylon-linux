@@ -33,13 +33,13 @@
                         <select name="region_id" id="2" value="{{ old('region_id') }}"
                             class="ml-20 w-80 searchRegion">
                             @foreach ($region as $region)
-                                <option name="zone_id" value="{{ $region->id }}" id="1">
+                                <option value="{{ $region->id }}" id="1">
                                     {{ $region->region_code }}</option>
                             @endforeach
                         </select>
 
                         <br><br>
-                        <label for="">Territory Name :</label>
+                        <label for="">Territory Code :</label>&nbsp;
                         <input type="text" name="code" id="2" value="{{ $code }}"
                             class="ml-6 w-80" hidden>
                         <input type="text" id="2" value="{{ $code }}" class="ml-6 w-80 bg-gray-100"
@@ -50,9 +50,6 @@
                         <input type="submit" name="" id="" value="SAVE"
                             class="ml-36 text-center text-white font-bold rounded py-2 w-2/12 focus:outline-none bg-green-400 cursor-pointer">
                     </form>
-                    <div>
-                        <a href="{{ route('admin.liveserch') }}">seaerch</a>
-                    </div>
                 </div>
             </div>
         </div>

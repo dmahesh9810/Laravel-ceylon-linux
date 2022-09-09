@@ -10,8 +10,8 @@
                             <tr>
                                 <td class="p-2 whitespace-nowrap">
                                     <div class="font-medium"><br>
-                                        <span>Zone : </span><span>{{ $region->zone->code }}</span><br><br>
                                         <span>region code : </span><span>{{ $region->region_code }}</span><br><br>
+                                        <span>Zone : </span><span>{{ $region->zone->code }}</span><br><br>
                                         <span>region name : </span><span>{{ $region->region_name }}</span><br><br>
 
                                         <a href="{{ route('region.edit', $region) }}"

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddRegionRequest;
 use App\Http\Requests\AdminRequest;
 use App\Models\Region;
+use App\Models\zone;
 use Illuminate\Http\Request;
 
 class EditRegionController extends Controller
@@ -20,8 +21,9 @@ class EditRegionController extends Controller
 
     public function edit(AdminRequest $adminRequest, Region $Region)
     {
+        $zone = zone::all();
         return view('admin.edit.edit-region')
-            ->with(['region' => $Region]);
+            ->with(['region' => $Region , 'zone' => $zone]);
     }
 
     public function update(AddRegionRequest $request, Region $region)

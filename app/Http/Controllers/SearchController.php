@@ -100,4 +100,22 @@ class SearchController extends Controller
 
         return view('admin.liveserch');
     }
+    public function livesearch2(Request $request)
+    {
+        if($request->ajax()){
+
+            $output = "";
+            $data = Region::where('zone_id', 'LIKE', '%'.$request->search)->get();
+
+            if($data){
+                foreach($data as $data){
+                    $output .=  '<option name="search" value="'.$data->zone->id.'" id="1">'.$data->zone->code.'</option>';
+                }
+
+                return response()->json($output);
+            }
+        }
+
+        return view('admin.liveserch');
+    }
 }
