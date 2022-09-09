@@ -34,24 +34,53 @@ class OrderExport implements FromCollection, WithMapping, WithHeadings
 
     public function map($order): array
     {
-        return [
-            $order->id,
-            $order->user_id,
-            $order->sku_id,
-            $order->remark,
-            $order->qty,
-            $order->po_no,
-        ];
+
+        if ($this->trust == 1) {
+            return [
+                $order->po_no,
+                $order->id,
+                $order->sku->code,
+                $order->remark,
+                $order->qty,
+                $order->sku->distributor_price,
+                $order->sku->distributor_price * $order->qty,
+            ];
+        } else {
+            return [
+                $order->po_no,
+                $order->id,
+                $order->user_id,
+                $order->sku->code,
+                $order->remark,
+                $order->qty,
+                $order->sku->distributor_price,
+                $order->sku->distributor_price * $order->qty,
+            ];
+        }
     }
     public function headings(): array
     {
-        return [
-            'id',
-            'user_id',
-            'sku_id',
-            'remark',
-            'qty',
-            'po_no',
-        ];
+        if ($this->trust == 1) {
+
+            return [
+                'po_no',
+                'id',
+                'sku_coe',
+                'remark',
+                'qty',
+                'unit price',
+                'Total price',
+            ];
+        } else {
+            return [
+                'po_no',
+                'id',
+                'user_id',
+                'sku_code',
+                'remark',
+                'qty',
+                'Total price',
+            ];
+        }
     }
 }

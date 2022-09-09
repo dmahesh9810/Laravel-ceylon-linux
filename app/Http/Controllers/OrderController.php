@@ -50,7 +50,8 @@ class OrderController extends Controller
         for ($i = 0; $i < count($skid); $i++) {
 
             if (!$qty[$i] == 0 && $remark) {
-
+                $date = array();
+                $date['created_at'] = Carbon::now();
                 $data = [
                     'user_id' => $request->user()->id,
                     'sku_id' => $skid[$i],
@@ -58,6 +59,7 @@ class OrderController extends Controller
                     'qty' => $qty[$i],
                     'po_no' => IdGenerator::GenerateId(new Order(), 'po_no', 2, '000'),
                     'date' => Carbon::now(),
+                    'created_at' => $date['created_at'] = Carbon::now(),
                 ];
                 DB::table('orders')->insert($data);
             }
@@ -91,5 +93,9 @@ class OrderController extends Controller
                 return $this->viewOrder($order);
             }
         }
+    }
+    public function show(Order $order)
+    {
+        return view('orderview')->with(['orders' => $order]);
     }
 }

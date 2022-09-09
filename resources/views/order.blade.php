@@ -11,7 +11,7 @@
                         @csrf
                         <label for="">Region</label>
                         <input type="text" name="searchclick" value="1" hidden>
-                                
+
                                 <label for="">PO NO</label>
                                 <input type="text" name="pono">
                                 <label for="">FROM</label>
@@ -57,6 +57,9 @@
                                         <th scope="col" class="py-3 px-6">
                                             TOTAL AMOUNT
                                         </th>
+                                        <th scope="col" class="py-3 px-6">
+                                            VIEW
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,12 +93,15 @@
                                             <td><input  value="{{ $order->date }}"
                                                     class="bg-white-500 font-bold rounded opacity-50 " type="text">
                                             </td>
-                                            <td><input  value="{{ $order->date }}"
+                                            <td><input  value="{{ Carbon\Carbon::parse($order->created_at)->format('h:i:s') }}"
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed" disabled type="text">
                                             </td>
                                             <td><input
                                                     value="{{ $order->qty * $order->sku->distributor_price }}"
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed" disabled type="number">
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('view.show', $order) }}" class="ml-2 p-2 bg-yellow-100">View</a>
                                             </td>
 
                                     @endforeach

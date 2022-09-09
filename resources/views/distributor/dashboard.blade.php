@@ -7,15 +7,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach ($errors->all() as $error)
-                    <div class="ml-3">
-                        <p class="mt-1 text-sm text-red-900">{{ $error }}</p>
-                    </div>
+                        <div class="ml-3">
+                            <p class="mt-1 text-sm text-red-900">{{ $error }}</p>
+                        </div>
                     @endforeach
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
 
                         <label for="">Remark </label>
-                        <input type="text" value="" class="w-72" name="remark">
+                        <input type="text" value="" class="w-72" name="remark" id="remark">
 
                         <br>
                         <br>
@@ -56,17 +56,18 @@
                                             <td><input
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
                                                     type="text" value="{{ $sku->name }}" disabled></td>
-                                            <td><input id="price"
+                                            <td><input id="price[]"
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
                                                     type="text" value="{{ $sku->distributor_price }}"></td>
 
                                             <td><input name="qty[]" value="0"
                                                     class="bg-white-500 font-bold rounded opacity-50 " type="number">
                                             </td>
-                                            <td><input
-                                                    class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
-                                                    id="total" class="" type="text"
-                                                    value="{{ $sku->distributor_price }}" disabled></td>
+                                            <td><span for=""
+                                                    class=" font-bold rounded opacity-50 cursor-not-allowed w-96">R.s
+                                                    <span id="total[]"></span></span></td>
+
+
                                         </tr>
                                     @endforeach
 
@@ -76,8 +77,10 @@
                         <input type="submit" value="ADD PO"
                             class="text-center text-white font-bold rounded py-2 w-2/12 focus:outline-none bg-green-400 cursor-pointer">
 
-                            <a href="{{ route('order.index') }}" class="p-6 text-center text-white font-bold rounded py-2 w-2/12 focus:outline-none bg-yellow-400 cursor-pointer">View</a>
+                        <a href="{{ route('order.index') }}"
+                            class="p-6 text-center text-white font-bold rounded py-2 w-2/12 focus:outline-none bg-yellow-400 cursor-pointer">View</a>
                     </form>
+                    <br>
                 </div>
             </div>
         </div>

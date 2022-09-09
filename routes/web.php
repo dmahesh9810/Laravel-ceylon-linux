@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', DashboardController::class)
         ->name('dashboard');
+        // Route::get('/view',[OrderController::class, 'view']);
         Route::get('/export',[OrderController::class, 'export']);
         Route::get('/pdfexprt',[OrderController::class, 'pdfexprt']);
         Route::resources([
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
             '/order' => OrderController::class,
             '/ordersearch' => SearchController::class,
         ]);
+        Route::get('/view/{order}', [OrderController::class, 'show'])->name('view.show');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -45,6 +47,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/allzone', [EditZoneController::class, 'index'])->name('admin.edit.zone');
     Route::get('/admin/allregion', [EditRegionController::class, 'index'])->name('allregion');
     Route::get('/admin/allterritory', [EditTerritoryController::class, 'index'])->name('allterritory');
+
 
     Route::get('/admin/zone/{zone}', [EditZoneController::class, 'edit'])->name('zone.edit');
     Route::get('/admin/region/{region}', [EditRegionController::class, 'edit'])->name('region.edit');
