@@ -15,7 +15,7 @@ class EditRegionController extends Controller
         return view('admin.edit.region')
             ->with([
                 'regions' => Region::query()
-                    ->paginate(2)
+                    ->paginate(5)
             ]);
     }
 

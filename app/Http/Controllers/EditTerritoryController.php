@@ -16,7 +16,7 @@ class EditTerritoryController extends Controller
         return view('admin.edit.territory')
             ->with([
                 'territors' => Territory::query()
-                    ->paginate(2)
+                    ->paginate(5)
             ]);
     }
 

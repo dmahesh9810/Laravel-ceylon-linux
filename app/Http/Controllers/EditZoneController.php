@@ -14,7 +14,7 @@ class EditZoneController extends Controller
         return view('admin.edit.zone')
             ->with([
                 'zones' => zone::query()
-                    ->paginate(6)
+                    ->paginate(5)
             ]);
     }
 

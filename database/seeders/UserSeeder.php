@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'mobile' => '0773132669',
             'email' => 'admin@gmail.com',
             'gender' => 'male',
-            'territory_id' => Territory::query()->inRandomOrder()->first()->id,
+            'territory_id' => null,
             'user_name' => 'mahesh456',
             'password' => Hash::make('password')
         ])->assignRole(Role::ROLE_ADMIN);
@@ -37,15 +37,15 @@ class UserSeeder extends Seeder
             'mobile' => '0773132665',
             'email' => 'dst@gmail.com',
             'gender' => 'male',
-            'territory_id' => Territory::query()->inRandomOrder()->first()->id,
+            'territory_id' => null,
             'user_name' => 'dst456',
             'password' => Hash::make('password')
         ])->assignRole(Role::ROLE_DISTRIBUTOR);
 
 
         $users = User::factory(1)->create();
-        foreach($users as $user){
-           $user->assignRole(Role::ROLE_DISTRIBUTOR);
+        foreach ($users as $user) {
+            $user->assignRole(Role::ROLE_DISTRIBUTOR);
         }
     }
 }
