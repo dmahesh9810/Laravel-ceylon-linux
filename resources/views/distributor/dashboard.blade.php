@@ -38,9 +38,6 @@
                                         <th scope="col" class="py-3 px-6">
                                             ENTER QTY
                                         </th>
-                                        <th scope="col" class="py-3 px-6">
-                                            TOTAL PRICE
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,10 +62,10 @@
                                                     class="qty bg-white-500 font-bold rounded opacity-50 "
                                                     type="number">
                                             </td>
-                                            <td><span for=""
+                                            {{-- <td><span for=""
                                                     class="resultbody font-bold rounded opacity-50 cursor-not-allowed w-96">R.s
                                                     <span id="total[]" name="total[]" step="any" id="total"
-                                                        class="total"></span></span></td>
+                                                        class="total"></span></span></td> --}}
 
 
                                         </tr>

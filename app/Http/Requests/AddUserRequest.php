@@ -32,7 +32,7 @@ class AddUserRequest extends FormRequest
             'email' => 'required|unique:users',
             'gender' => 'required',
             'territorie_id' => 'required',
-            'user_name' => 'required',
+            'user_name' => 'required|unique:users',
             'password' => 'required',
 
         ];

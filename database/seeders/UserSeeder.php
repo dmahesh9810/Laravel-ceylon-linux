@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
             'mobile' => '0773132665',
             'email' => 'dst@gmail.com',
             'gender' => 'male',
-            'territory_id' => null,
+            'territory_id' => Territory::query()->inRandomOrder()->first()->id,
             'user_name' => 'dst456',
             'password' => Hash::make('password')
         ])->assignRole(Role::ROLE_DISTRIBUTOR);

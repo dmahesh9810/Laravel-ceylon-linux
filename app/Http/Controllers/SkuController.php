@@ -13,7 +13,7 @@ class SkuController extends Controller
     {
         $skuid = IdGenerator::GenerateId(new Sku(), 'code', 2, 'SID');
         $skucode = IdGenerator::GenerateId(new Sku(), 'code', 2, 'SKU');
-        return view('admin.addsku') ->with(['skuid' => $skuid,'skucode' => $skucode]);;
+        return view('admin.addsku')->with(['skuid' => $skuid, 'skucode' => $skucode]);;
     }
 
     public function store(AddSkuRequest $addSkuRequest)
@@ -30,6 +30,6 @@ class SkuController extends Controller
 
         return redirect()
             ->route('addsku.index')
-            ->with('success', 'New user has been created');
+            ->with('success', 'New sku has been created');
     }
 }

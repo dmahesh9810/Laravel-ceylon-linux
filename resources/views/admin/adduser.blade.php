@@ -15,6 +15,13 @@
                         <p class="mt-1 text-sm text-red-900">{{ $error }}</p>
                     </div>
                     @endforeach
+                    @if(session('success'))
+                        <div class="mx-6 py-1 px-4 mb-2 mt-2 bg-green-100 border text-green-600 text-sm rounded-md flex items-center justify-between shadow" role="alert">
+
+                            <span class="block sm:inline">{{session('success')}}</span>
+
+                        </div>
+                        @endif
                     <form action="{{ route('addusers.store') }}" method="post">
                         @csrf
                         <h1>Add Users</h1>
