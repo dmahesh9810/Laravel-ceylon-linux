@@ -39,7 +39,7 @@ class SearchController extends Controller
                         $order = Order::where('po_no', $pono)->get();
                         return $this->viewOrder($order);
                     } else {
-                        $order = Order::where('po_no', $pono)
+                        $order = Order::where('po_no','like', $pono .'%')
                             ->where('user_id', $request->user()->id)->get();
                         return $this->viewOrder($order);
                     }
@@ -105,7 +105,7 @@ class SearchController extends Controller
         if($request->ajax()){
 
             $output = "";
-            $data = Region::where('zone_id', 'LIKE', '%'.$request->search)->get();
+            $data = Region::where('zone_id', $request->search)->get();
 
             if($data){
                 foreach($data as $data){

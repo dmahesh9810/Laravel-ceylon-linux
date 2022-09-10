@@ -16,9 +16,10 @@
                     <div class="p-6 bg-white border-b border-gray-200 ">
 
 
-                        <label for="">Zone code</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="">Zone
+                            code</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <select id="search" name="search">
-                            <option value="{{ $territory->region->zone->code }}">{{ $territory->region->zone->code }}
+                            <option value="{{ $territory->region->zone_id }}">{{ $territory->region->zone->code }}
                             </option>
                             @foreach ($zone as $zone)
                                 @if (!($zone->id == $territory->region->zone->id))
@@ -38,10 +39,11 @@
                                 @endif
                             @endforeach
                         </select> <br><br>
-                        <label for="">Territory code</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="name" type="text" name="name"
-                            value="{{ $territory->code }}" class="ml-3 bg-gray-100" disabled><br><br>
-                        <label for="">Territory Name</label>&nbsp;&nbsp;&nbsp;<input id="name" type="text" name="name"
-                            value="{{ $territory->name }}" class="ml-3"><br><br>
+                        <label for="">Territory code</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="name"
+                            type="text" name="name" value="{{ $territory->code }}" class="ml-3 bg-gray-100"
+                            disabled><br><br>
+                        <label for="">Territory Name</label>&nbsp;&nbsp;&nbsp;<input id="name"
+                            type="text" name="name" value="{{ $territory->name }}" class="ml-3"><br><br>
                         <input type="submit" value="UPDATE"
                             class="ml-32 p-10 text-white font-bold rounded py-2 w-2/12 focus:outline-none bg-green-400 cursor-pointer">
                     </div>

@@ -16,7 +16,6 @@
 <label for="">Name : {{ $value->sku->name }}</label><br>
 <label for="">mrp : {{ $value->sku->mrp }}</label><br>
 <label for="">Unit Price : {{ $value->sku->distributor_price }}</label><br>
-<label for="">Unit Price : {{ $value->sku->distributor_price }}</label><br>
 <label for="">QTY : {{ $value->qty }}</label><br>
 <label for="">Date : {{ $value->date }}</label><br>
 <label for="" class="bg-black-500 text-black">Total : {{ $value->qty * $value->sku->distributor_price }}</label><br><br>

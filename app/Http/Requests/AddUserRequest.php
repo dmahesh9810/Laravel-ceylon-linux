@@ -28,7 +28,7 @@ class AddUserRequest extends FormRequest
             'name' => 'required|string',
             'nic' => 'required',
             'address' => 'required',
-            'mobile' => 'required|numeric',
+            'mobile' => 'required|numeric|unique:users',
             'email' => 'required|unique:users',
             'gender' => 'required',
             'territorie_id' => 'required',

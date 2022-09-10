@@ -26,6 +26,8 @@ class OrderRequest extends FormRequest
     {
         return [
             'remark' => 'required',
+            'qty' => 'required',
+            'skuid' => 'required',
         ];
     }
 }

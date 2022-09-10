@@ -51,7 +51,7 @@ class OrderController extends Controller
 
             if (!$qty[$i] == 0 && $remark) {
                 $date = array();
-                $date['created_at'] = Carbon::now();
+                $dt = Carbon::parse()->timezone('Asia/Colombo');
                 $data = [
                     'user_id' => $request->user()->id,
                     'sku_id' => $skid[$i],
@@ -59,7 +59,7 @@ class OrderController extends Controller
                     'qty' => $qty[$i],
                     'po_no' => IdGenerator::GenerateId(new Order(), 'po_no', 2, '000'),
                     'date' => Carbon::now(),
-                    'created_at' => $date['created_at'] = Carbon::now(),
+                    'created_at' => $dt,
                 ];
                 DB::table('orders')->insert($data);
             }

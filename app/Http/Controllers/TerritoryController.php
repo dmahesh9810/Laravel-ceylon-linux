@@ -29,6 +29,6 @@ class TerritoryController extends Controller
 
         return redirect()
             ->route('addterritory.index')
-            ->with('success', 'New region has been created');
+            ->with('success', 'New territory has been created');
     }
 }

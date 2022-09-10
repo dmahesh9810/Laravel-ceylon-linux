@@ -36,6 +36,7 @@
                                         <th scope="col" class="">
 
                                         </th>
+                                        @role('admin')
                                         <th scope="col" class="py-3 px-6">
                                             REGION
                                         </th>
@@ -45,6 +46,7 @@
                                         <th scope="col" class="py-3 px-6">
                                             DISTRIBUTOR
                                         </th>
+                                        @endrole
                                         <th scope="col" class="py-3 px-6">
                                             PO NO
                                         </th>
@@ -75,6 +77,7 @@
                                                     <input type="text" name="total[]" value="{{ $order->qty * $order->sku->distributor_price }}" hidden>
 
                                             </td>
+                                            @role('admin')
                                             <td>
                                                 <input
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
@@ -87,7 +90,9 @@
                                             <td><input id="price"
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
                                                     type="text" value="{{ $order->user->name }}"></td>
-                                            <td><input
+                                                    @endrole
+                                            <td>
+                                                <input
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
                                                     type="text" value="{{ $order->po_no }}"></td>
                                             <td><input  value="{{ $order->date }}"
