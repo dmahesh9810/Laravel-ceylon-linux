@@ -38,7 +38,6 @@ class OrderExport implements FromCollection, WithMapping, WithHeadings
         if ($this->trust == 1) {
             return [
                 $order->po_no,
-                $order->id,
                 $order->sku->code,
                 $order->remark,
                 $order->qty,
@@ -48,7 +47,6 @@ class OrderExport implements FromCollection, WithMapping, WithHeadings
         } else {
             return [
                 $order->po_no,
-                $order->id,
                 $order->user_id,
                 $order->sku->code,
                 $order->remark,
@@ -64,8 +62,7 @@ class OrderExport implements FromCollection, WithMapping, WithHeadings
 
             return [
                 'po_no',
-                'id',
-                'sku_coe',
+                'sku_code',
                 'remark',
                 'qty',
                 'unit price',
@@ -74,11 +71,11 @@ class OrderExport implements FromCollection, WithMapping, WithHeadings
         } else {
             return [
                 'po_no',
-                'id',
                 'user_id',
                 'sku_code',
                 'remark',
                 'qty',
+                'unit price',
                 'Total price',
             ];
         }

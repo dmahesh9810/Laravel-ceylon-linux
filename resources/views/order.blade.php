@@ -128,7 +128,7 @@
                             class="ml-2 text-center text-white font-bold rounded p-4 m-4 w-2/12 focus:outline-none bg-green-400 cursor-pointer">
                         <a href="/export"
                             class="ml-2 text-center text-white font-bold rounded p-4 m-4 w-2/12 focus:outline-none bg-green-400 cursor-pointer">Export
-                            AL To Excell</a>
+                            ALL To Excell</a>
 
                 </form>
             </div>
