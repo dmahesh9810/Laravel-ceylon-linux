@@ -12,13 +12,14 @@
                         <label for="">Region</label>
                         <input type="text" name="searchclick" value="1" hidden>
 
-                                <label for="">PO NO</label>
-                                <input type="text" name="pono">
-                                <label for="">FROM</label>
-                                <input type="date" name="datefrom">
-                                <label for="">TO</label>
-                                <input type="date" name="dateto">
-                                <input type="submit" value="Search"  class="ml-2 text-center text-white font-bold rounded p-4 m-4 w-1/12 focus:outline-none bg-green-400 cursor-pointer">
+                        <label for="">PO NO</label>
+                        <input type="text" name="pono">
+                        <label for="">FROM</label>
+                        <input type="date" name="datefrom">
+                        <label for="">TO</label>
+                        <input type="date" name="dateto">
+                        <input type="submit" value="Search"
+                            class="ml-2 text-center text-white font-bold rounded p-4 m-4 w-1/12 focus:outline-none bg-green-400 cursor-pointer">
                     </form>
                 </div>
                 <form action="{{ route('invoice.store') }}" method="POST">
@@ -37,15 +38,15 @@
 
                                         </th>
                                         @role('admin')
-                                        <th scope="col" class="py-3 px-6">
-                                            REGION
-                                        </th>
-                                        <th scope="col" class="py-3 px-6">
-                                            TERRITORY
-                                        </th>
-                                        <th scope="col" class="py-3 px-6">
-                                            DISTRIBUTOR
-                                        </th>
+                                            <th scope="col" class="py-3 px-6">
+                                                REGION
+                                            </th>
+                                            <th scope="col" class="py-3 px-6">
+                                                TERRITORY
+                                            </th>
+                                            <th scope="col" class="py-3 px-6">
+                                                DISTRIBUTOR
+                                            </th>
                                         @endrole
                                         <th scope="col" class="py-3 px-6">
                                             PO NO
@@ -69,46 +70,54 @@
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td>
                                                 <input type="checkbox" name="orderid[]" id=""
-                                                    value="{{ $order->id }}" >
-                                                    <input type="text" name="skuname[]" value="{{  $order->sku->code }}" hidden>
-                                                    <input type="text" name="qty[]" value="{{  $order->qty }}" hidden>
-                                                    <input type="text" name="pono[]" value="{{  $order->po_no }}" hidden>
-                                                    <input type="text" name="date[]" value="{{  $order->date }}" hidden>
-                                                    <input type="text" name="total[]" value="{{ $order->qty * $order->sku->distributor_price }}" hidden>
+                                                    value="{{ $order->id }}">
+                                                <input type="text" name="skuname[]" value="{{ $order->sku->code }}"
+                                                    hidden>
+                                                <input type="text" name="qty[]" value="{{ $order->qty }}" hidden>
+                                                <input type="text" name="pono[]" value="{{ $order->po_no }}" hidden>
+                                                <input type="text" name="date[]" value="{{ $order->date }}" hidden>
+                                                <input type="text" name="total[]"
+                                                    value="{{ $order->qty * $order->sku->distributor_price }}" hidden>
 
                                             </td>
                                             @role('admin')
+                                                <td>
+                                                    <input
+                                                        class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
+                                                        type="text"
+                                                        value="{{ $order->user->territory->region->region_code }}">
+
+                                                </td>
+                                                <td><input
+                                                        class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
+                                                        type="text" value="{{ $order->user->territory->code }}" disabled>
+                                                </td>
+                                                <td><input id="price"
+                                                        class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
+                                                        type="text" value="{{ $order->user->name }}"></td>
+                                            @endrole
                                             <td>
                                                 <input
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
-                                                    type="text" value="{{ $order->user->territory->region->region_code }}">
-
+                                                    type="text" value="{{ $order->po_no }}"disabled>
+                                            </td>
+                                            <td><input value="{{ $order->date }}"
+                                                    class="bg-gray-500 cursor-not-allowed text-white font-bold rounded opacity-50 "disabled
+                                                    type="text">
                                             </td>
                                             <td><input
+                                                    value="{{ Carbon\Carbon::parse($order->created_at)->format('h:i:s') }}"
                                                     class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
-                                                    type="text" value="{{ $order->user->territory->code }}" disabled></td>
-                                            <td><input id="price"
-                                                    class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
-                                                    type="text" value="{{ $order->user->name }}"></td>
-                                                    @endrole
-                                            <td>
-                                                <input
-                                                    class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
-                                                    type="text" value="{{ $order->po_no }}"></td>
-                                            <td><input  value="{{ $order->date }}"
-                                                    class="bg-white-500 font-bold rounded opacity-50 " type="text">
+                                                    disabled type="text">
                                             </td>
-                                            <td><input  value="{{ Carbon\Carbon::parse($order->created_at)->format('h:i:s') }}"
-                                                    class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed" disabled type="text">
-                                            </td>
-                                            <td><input
-                                                    value="{{ $order->qty * $order->sku->distributor_price }}"
-                                                    class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed" disabled type="number">
+                                            <td><input value="{{ $order->qty * $order->sku->distributor_price }}"
+                                                    class="bg-gray-500 text-white font-bold rounded opacity-50 cursor-not-allowed"
+                                                    disabled type="number">
                                             </td>
                                             <td>
-                                                <a href="{{ route('view.show', $order) }}" class="ml-2 p-2 bg-yellow-100">View</a>
+                                                <a href="{{ route('view.show', $order) }}"
+                                                    class="ml-2 p-2 bg-yellow-300">View</a>
                                             </td>
-
                                     @endforeach
 
                                 </tbody>
@@ -117,7 +126,9 @@
                         </div>
                         <input type="submit" value="Invoice"
                             class="ml-2 text-center text-white font-bold rounded p-4 m-4 w-2/12 focus:outline-none bg-green-400 cursor-pointer">
-                        <a href="/export" class="ml-2 text-center text-white font-bold rounded p-4 m-4 w-2/12 focus:outline-none bg-green-400 cursor-pointer">Export Excel</a>
+                        <a href="/export"
+                            class="ml-2 text-center text-white font-bold rounded p-4 m-4 w-2/12 focus:outline-none bg-green-400 cursor-pointer">Export
+                            AL To Excell</a>
 
                 </form>
             </div>
