@@ -23,18 +23,18 @@ class EditRegionController extends Controller
     {
         $zone = zone::all();
         return view('admin.edit.edit-region')
-            ->with(['region' => $Region , 'zone' => $zone]);
+            ->with(['region' => $Region, 'zone' => $zone]);
     }
 
     public function update(AddRegionRequest $request, Region $region)
     {
         $region->update($request->validated());
-        return redirect('/admin/allregion');
+        return redirect('/admin/allregion')->with('success', 'Region Updated ');
     }
 
     public function delete(AdminRequest $adminRequest, Region $region)
     {
         $region->delete();
-        return redirect('/admin/allregion');
+        return redirect('/admin/allregion')->with('success', 'Region deleted ');
     }
 }

@@ -31,13 +31,13 @@ class EditTerritoryController extends Controller
     public function update(AddTerritoryRequest $request, Territory $territory)
     {
         $territory->update($request->validated());
-        return redirect('/admin/allterritory');
+        return redirect('/admin/allterritory')->with('success', 'Territory updated ');
     }
 
     public function delete(AdminRequest $adminRequest, Territory $Territory)
     {
         $Territory->delete();
-        return redirect('/admin/allterritory');
+        return redirect('/admin/allterritory')->with('success', 'Territory deleted ');
     }
 
 

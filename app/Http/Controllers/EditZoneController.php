@@ -27,11 +27,11 @@ class EditZoneController extends Controller
     public function update(AddZoneRequest $request, zone $zone)
     {
         $zone->update($request->validated());
-        return redirect('/admin/allzone');
+        return redirect('/admin/allzone')->with('success', 'Zone Updated ');
     }
     public function delete(AdminRequest $adminRequest, zone $zone)
     {
         $zone->delete();
-        return redirect('/admin/allzone');
+        return redirect('/admin/allzone')->with('success', 'Zone deleted ');
     }
 }

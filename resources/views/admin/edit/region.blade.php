@@ -4,6 +4,13 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 ">
                     <h3>All Region</h3><br>
+                    @if(session('success'))
+                        <div class="mx-6 py-1 px-4 mb-2 mt-2 bg-green-100 border text-green-600 text-sm rounded-md flex items-center justify-between shadow" role="alert">
+
+                            <span class="block sm:inline">{{session('success')}}</span>
+
+                        </div>
+                        @endif
                     <hr>
                     <tbody class="text-sm divide-y">
                         @forelse ($regions as $region)
