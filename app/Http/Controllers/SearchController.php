@@ -11,9 +11,18 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
+        if ($request->user()->hasRole(Role::ROLE_ADMIN)) {
+
+            $order = Order::all();
+            return $this->viewOrder($order);
+        } else {
+            $order = Order::where('user_id', 'like', $request->user()->id)->get();
+            return $this->viewOrder($order);
+        }
     }
     public function store(Request $request)
     {
+
         if ($request->searchclick == 1) {
             $pono = $request->pono;
             $datefrom = $request->datefrom;
